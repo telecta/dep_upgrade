@@ -1,28 +1,55 @@
-# DepUpgrade
+# `rails dep:upgrade`
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dep_upgrade`. To experiment with that code, run `bin/console` for an interactive prompt.
+Keep your Rails app dependencies up-to-date by running `rails dep:upgrade` weekly.
 
-TODO: Delete this and the text above, and describe your gem
+`rails dep:upgrade` runs `bundle update`, `bundle audit`, `yarn upgrade` to update your app dependencies,
+then generates a markdown summary for your pull/merge request:
+
+```markdown
+Paste this summary into your pull/merge request (chore-dep_upgrade_20171202):
+-----
+
+## Dep Upgrade 2017-12-02
+
+bundle update:
+* airbrake-ruby [(2.6.0 -> 2.6.1)](https://gemnasium.com/gems/airbrake-ruby)
+* inherited_resources [(1.7.2 -> 1.8.0)](https://gemnasium.com/gems/inherited_resources)
+* paper_trail [(8.0.1 -> 8.1.0)](https://gemnasium.com/gems/paper_trail)
+* twilio-ruby [(5.5.0 -> 5.5.1)](https://gemnasium.com/gems/twilio-ruby)
+* uglifier [(3.2.0 -> 4.0.0)](https://gemnasium.com/gems/uglifier)
+
+bundle audit:
+No vulnerabilities found
+
+yarn upgrade:
+* moment (2.19.2 -> 2.19.3)
+```
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dep_upgrade'
+gem "dep_upgrade"
 ```
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
-Or install it yourself as:
-
-    $ gem install dep_upgrade
+After that, rake task `dep:upgrade` will be added automatically into your Rails app.
 
 ## Usage
 
-TODO: Write usage instructions here
+Run:
+
+```
+$ rails dep:upgrade
+```
+
+
 
 ## Development
 

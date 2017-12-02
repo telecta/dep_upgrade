@@ -9,18 +9,21 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Huiming Teo"]
   spec.email         = ["teohuiming@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Keep your app dependencies up-to-date with rails dep:upgrade}
+  spec.description   = "`rails dep:upgrade` runs `bundle update`," \
+    " `bundle audit`, `yarn upgrade` and generates a markdown-style summary" \
+    " of what have changed that you can paste into a pull/merge request."
+  spec.homepage      = "https://github.com/blacktangent/dep_upgrade"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+  if spec.respond_to?(:metadata=)
+    spec.metadata = {
+      "allowed_push_host" => "https://rubygems.org",
+      "bug_tracker_uri" => "http://github.com/blacktangent/dep_upgrade/issues",
+      "changelog_uri" => "https://github.com/blacktangent/dep_upgrade/blob/master/CHANGELOG.md",
+      "homepage_uri" => "https://github.com/blacktangent/dep_upgrade",
+      "source_code_uri" => "https://github.com/blacktangent/dep_upgrade"
+    }
   end
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -33,4 +36,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "git-chlog"
+
+  spec.add_dependency "bundler"
+  spec.add_dependency "bundler-audit"
+  spec.add_dependency "rake"
 end
