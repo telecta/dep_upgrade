@@ -9,6 +9,8 @@ module DepUpgrade
       :yarn_outdated_output
 
     def call
+      detect_dependency_files
+
       bundle_outdated
       yarn_outdated
 
@@ -20,39 +22,69 @@ module DepUpgrade
       print_summary
     end
 
+    def detect_dependency_files
+      puts "\n== Detect dependency config files =="
+      @_has_gemfile = File.exist?("Gemfile")
+      @_has_package_json = File.exist?("package.json")
+
+      puts "Gemfile#{ " not" unless has_gemfile? } found."
+      puts "package.json#{ " not" unless has_package_json? } found."
+    end
+
+    def has_gemfile?
+      @_has_gemfile
+    end
+
+    def has_package_json?
+      @_has_package_json
+    end
+
     def system!(*args)
       system(*args) || abort("\n== Command #{args} failed ==")
     end
 
     def bundle_outdated
+      return unless has_gemfile?
+
       puts "\n== Analyze outdated gems =="
       self.bundler_outdated_output = `bundle outdated --strict --parseable`
       puts "Done."
     end
 
     def yarn_outdated
+      return unless has_package_json?
+
       puts "\n== Analyze outdated yarn packages =="
-      self.yarn_outdated_output = JSON.parse(`yarn outdated --json`.split("\n").last)
+      self.yarn_outdated_output = JSON
+        .parse(`yarn outdated --json`.split("\n").last)
       puts "Done."
     end
 
     def bundle_update
+      return unless has_gemfile?
+
       puts "\n== Update all gems =="
       system!("bundle update --all")
     end
 
     def bundle_audit_update
+      return unless has_gemfile?
+
       puts "\n== Update gems advisory database =="
       system!("bundle exec bundle audit update")
     end
 
     def bundle_audit
+      return unless has_gemfile?
+
       puts "\n== Audit all gems =="
       self.bundler_audit_output = `bundle exec bundle audit`.strip
       puts "Done."
     end
 
     def yarn_upgrade
+      return unless has_package_json?
+
       puts "\n== Update all yarn packages =="
       system!("yarn upgrade")
     end
@@ -70,6 +102,8 @@ module DepUpgrade
     end
 
     def print_bundle_update_summary
+      return unless has_gemfile?
+
       puts "\nbundle update:"
       self.bundler_outdated_output
         .split("\n")
@@ -90,6 +124,8 @@ module DepUpgrade
     end
 
     def print_yarn_upgrade_summary
+      return unless has_package_json?
+
       puts "\nyarn upgrade:"
       self.yarn_outdated_output["data"]["body"]
         .select { |package| package[1] != package[2] } # Current != Wanted
@@ -98,6 +134,8 @@ module DepUpgrade
     end
 
     def print_bundle_audit_summary
+      return unless has_gemfile?
+
       puts "\nbundle audit:"
       puts self.bundler_audit_output
     end
