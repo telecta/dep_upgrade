@@ -10,9 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["teohuiming@gmail.com"]
 
   spec.summary       = %q{Keep your app dependencies up-to-date with rails dep:upgrade}
-  spec.description   = "`rails dep:upgrade` runs `bundle update`," \
-    " `bundle audit`, `yarn upgrade` and generates a markdown-style summary" \
-    " of what have changed that you can paste into a pull/merge request."
+  spec.description   = "`rails dep:upgrade` runs `bundle update`, " \
+    "`bundle audit`, `yarn upgrade` to update your app dependencies, " \
+    "then generates a markdown summary for your pull/merge request."
   spec.homepage      = "https://github.com/blacktangent/dep_upgrade"
   spec.license       = "MIT"
 
