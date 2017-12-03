@@ -1,7 +1,7 @@
 # Change Log
-## [0.2.0](https://github.com/blacktangent/dep_upgrade/tree/0.2.0)
+## [v0.2.0](https://github.com/blacktangent/dep_upgrade/tree/v0.2.0)
 
-[Full Changelog](https://github.com/blacktangent/dep_upgrade/compare/v0.1.0...0.2.0)
+[Full Changelog](https://github.com/blacktangent/dep_upgrade/compare/v0.1.0...v0.2.0)
 *  2017-12-03 - Detect Gemfile, package.json and run commands accordingly  [#4](https://github.com/blacktangent/dep_upgrade/pull/4)
 
 ## [v0.1.0](https://github.com/blacktangent/dep_upgrade/tree/v0.1.0)
