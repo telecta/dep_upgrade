@@ -115,10 +115,8 @@ module DepUpgrade
         end
         .compact
         .map do |gem|
-          [
-            "#{gem['name']} [(#{gem['from']} -> #{gem['to']})]",
-            "(https://gemnasium.com/gems/#{gem['name']})"
-          ].join
+          "#{gem['name']} [(#{gem['from']} -> #{gem['to']})]" \
+          "(https://gemnasium.com/gems/#{gem['name']}/versions/#{gem['to']})"
         end
         .each { |line| puts "* #{line}" }
     end
@@ -129,7 +127,10 @@ module DepUpgrade
       puts "\nyarn upgrade:"
       self.yarn_outdated_output["data"]["body"]
         .select { |package| package[1] != package[2] } # Current != Wanted
-        .map { |package| "#{package[0]} (#{package[1]} -> #{package[2]})" }
+        .map do |package|
+          "#{package[0]} [(#{package[1]} -> #{package[2]})]" \
+          "(https://gemnasium.com/npms/#{package[0]}/versions/#{package[2]})"
+        end
         .each { |line| puts "* #{line}" }
     end
 
