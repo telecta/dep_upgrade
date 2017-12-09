@@ -1,4 +1,10 @@
 # Change Log
+## [v0.3.1](https://github.com/blacktangent/dep_upgrade/tree/v0.3.1)
+
+[Full Changelog](https://github.com/blacktangent/dep_upgrade/compare/v0.3.0...v0.3.1)
+*  2017-12-09 - Update usage on readme  [#7](https://github.com/blacktangent/dep_upgrade/pull/7)
+*  2017-12-09 - Remove --all switch from bundle update for now  [#8](https://github.com/blacktangent/dep_upgrade/pull/8)
+
 ## [v0.3.0](https://github.com/blacktangent/dep_upgrade/tree/v0.3.0)
 
 [Full Changelog](https://github.com/blacktangent/dep_upgrade/compare/v0.2.0...v0.3.0)

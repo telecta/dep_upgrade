@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dep_upgrade (0.3.0)
+    dep_upgrade (0.3.1)
       bundler
       bundler-audit
       rake
