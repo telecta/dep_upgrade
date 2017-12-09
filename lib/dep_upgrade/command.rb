@@ -64,7 +64,7 @@ module DepUpgrade
       return unless has_gemfile?
 
       puts "\n== Update all gems =="
-      system!("bundle update --all")
+      system!("bundle update")
     end
 
     def bundle_audit_update
