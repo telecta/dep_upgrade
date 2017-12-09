@@ -30,7 +30,9 @@ yarn upgrade:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "dep_upgrade"
+group :development do
+  gem "dep_upgrade"
+end
 ```
 
 And then execute:
@@ -49,6 +51,11 @@ Run:
 $ rails dep:upgrade
 ```
 
+For Rails 4.x and earlier,
+
+```
+$ bundle exec rake dep:upgrade
+```
 
 
 ## Development
