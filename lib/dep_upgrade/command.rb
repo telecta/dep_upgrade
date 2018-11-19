@@ -116,7 +116,7 @@ module DepUpgrade
         .compact
         .map do |gem|
           "#{gem['name']} [(#{gem['from']} -> #{gem['to']})]" \
-          "(https://gemnasium.com/gems/#{gem['name']}/versions/#{gem['to']})"
+          "(https://rubygems.org/gems/#{gem['name']}/versions/#{gem['to']})"
         end
         .each { |line| puts "* #{line}" }
     end
@@ -129,7 +129,7 @@ module DepUpgrade
         .select { |package| package[1] != package[2] } # Current != Wanted
         .map do |package|
           "#{package[0]} [(#{package[1]} -> #{package[2]})]" \
-          "(https://gemnasium.com/npms/#{package[0]}/versions/#{package[2]})"
+          "(https://www.npmjs.com/package/#{package[0]}/v/#{package[2]})"
         end
         .each { |line| puts "* #{line}" }
     end
