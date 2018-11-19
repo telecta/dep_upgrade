@@ -1,4 +1,9 @@
 # Change Log
+## [v0.4.0](https://github.com/blacktangent/dep_upgrade/tree/v0.4.0)
+
+[Full Changelog](https://github.com/blacktangent/dep_upgrade/compare/v0.3.1...v0.4.0)
+*  2018-11-19 - Replace Gemnasium link with official package link  [#9](https://github.com/blacktangent/dep_upgrade/pull/9)
+
 ## [v0.3.1](https://github.com/blacktangent/dep_upgrade/tree/v0.3.1)
 
 [Full Changelog](https://github.com/blacktangent/dep_upgrade/compare/v0.3.0...v0.3.1)
